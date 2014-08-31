@@ -5,11 +5,11 @@
 "description": "一个通过56员工考勤记录生成统计图表的扩展",
 "icons": { "128": "icon.jpg" },
 "content_scripts": [{
-"matches": ["http://*/*"],
+"matches": ["http://oa.corp.56.com/*"],
 "js": ["js/content_script.js"]
 }],
 "page_action":{
-    "default_icon":"icon.png",
+    "default_icon":"icon.jpg",
     "default_title":"56微统计",
     "default_popup":"html/popup.html"
 },
@@ -18,5 +18,12 @@
   },
 "permissions":[
     "tabs"
+],
+"web_accessible_resources":[
+"img/top.png",
+"js/libs/highcharts-4.0.3/highcharts.js",
+"css/style.css",
+"html/result.html",
+"js/libs/jquery/jquery.min.js"
 ]
 }
