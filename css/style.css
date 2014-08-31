@@ -1,13 +1,6 @@
-.chart-container {
-    display:none;
-    box-shadow: 0 0 .5em #999;
-    overflow: scroll;
-    background-color: #666;
-    height: 600px;
-    width: 800px;
-    margin-top: -200px;
-    margin-left: -200px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
+.container {
+    margin-bottom: 50px;
+}
+.title {
+    text-align: center;
 }

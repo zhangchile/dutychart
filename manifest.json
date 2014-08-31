@@ -24,6 +24,8 @@
 "js/libs/highcharts-4.0.3/highcharts.js",
 "css/style.css",
 "html/result.html",
-"js/libs/jquery/jquery.min.js"
+"js/libs/jquery/jquery.min.js",
+"js/libs/highcharts-4.0.3/highcharts-more.js",
+"js/libs/highcharts-4.0.3/modules/exporting.js"
 ]
 }
