@@ -18,17 +18,16 @@ var earliest = 0;//最早到
 var latest = 0;//最晚走
 
 var toTime = function(time) {
-    var date =  date;
     var datetime = new Date("2014/11/11 " + time);
     return datetime.getTime();
 }
 
 for(var i=0,n = userdata.length; i < n; i++) {
-    date.push(userdata[i].date);
-    weekdate.push(userdata[i].weekdate);
-    duration.push(parseFloat(userdata[i].duration));
-    start_time.push(userdata[i].start_time);
-    end_time.push(userdata[i].end_time);
+    date[i] = userdata[i].date;
+    weekdate[i] = userdata[i].weekdate;
+    duration[i] = parseFloat(userdata[i].duration);
+    start_time[i] = userdata[i].start_time;
+    end_time[i] = userdata[i].end_time;
 
     if(userdata[i].duration == 0) total_real -= 1;
     total_duration += parseFloat(userdata[i].duration);
@@ -53,7 +52,7 @@ for(var i=0,n = userdata.length; i < n; i++) {
 var avg_duration = parseFloat(total_duration / total_real).toFixed(2);
 var avg_dru_arr = [];
 for(var i=0,n=userdata.length; i < n; i++) { 
-    avg_dru_arr.push(parseFloat(avg_duration));
+    avg_dru_arr[i] = parseFloat(avg_duration);
 }
 // console.log(avg_dru_arr);
 
@@ -74,13 +73,18 @@ $(function () {
                 text: '时长（小时）'
             }
         },
+        tooltip: {
+            crosshairs: true,
+            shared: true,
+            valueSuffix: ' 小时'
+        },
         series: [{
             type: 'column',
             name: '你',
             data: duration
         }, {
             type: 'spline',
-            name: 'Average',
+            name: '平均',
             data: avg_dru_arr,
             marker: {
                 lineWidth: 2,
@@ -120,7 +124,7 @@ $(function () {
         
         yAxis: {
             reversed: true,
-            tickInterval : 0.5,
+            // tickInterval : 0.5,
             title: {
                 text: '时间'
             }
@@ -144,6 +148,55 @@ $(function () {
     });
 });
 
+$(function () {
 
+    var start_data3 = [];
+    var end_data3 = [];
+    for (var i = userdata.length - 1; i >= 0; i--) {
+        //把时间换成点
+        start_data3[i] = isNaN(parseFloat(start_time[i].substring(0,5).replace(':','.')))  ? null : parseFloat(start_time[i].substring(0,5).replace(':','.'));
+        end_data3[i] = isNaN(parseFloat(end_time[i].substring(0,5).replace(':','.'))) ? null : parseFloat(end_time[i].substring(0,5).replace(':','.'));
+    };
+        $('#container3').highcharts({
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: '工作时间'
+            },
+            subtitle: {
+                text: '到达和离开统计'
+            },
+            xAxis: {
+                categories: date
+            },
+            yAxis: {
+                reversed:true,
+                title: {
+                    text: '时间'
+                },
+                max: 24
+            },
+            tooltip: {
+                crosshairs: true,
+                shared: true,
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: true
+                }
+            },
+            series: [{
+                name: '到达',
+                data: start_data3
+            }, {
+                name: '离开',
+                data: end_data3
+            }]
+        });
+    });
 
 });//onload end
