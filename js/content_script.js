@@ -38,15 +38,38 @@ function duration(start, end) {
     return isNaN(dur) ? 0 : dur.toFixed(2);
 }
 
+Date.prototype.Format = function(fmt) { //author: meizz   
+  var o = {   
+    "M+" : this.getMonth()+1,                 //月份   
+    "d+" : this.getDate(),                    //日   
+    "h+" : this.getHours(),                   //小时   
+    "m+" : this.getMinutes(),                 //分   
+    "s+" : this.getSeconds(),                 //秒   
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度   
+    "S"  : this.getMilliseconds()             //毫秒   
+  };   
+  if(/(y+)/.test(fmt))   
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+  for(var k in o)   
+    if(new RegExp("("+ k +")").test(fmt))   
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+  return fmt;   
+}  
+
 var addButton = function() {
 
     var img = document.createElement("img");
     img.id = "gotop";
     img.src = chrome.extension.getURL("img/top.png");
+    img.alt = "56微统计";
+    img.title = "56微统计";
     img.setAttribute("style","position: fixed;bottom: 113px;z-index: 99;left: 300px;top:5px;cursor:pointer;opacity: 0.5;");
     img.onclick = function (){ 
-
-        createIframe('http://oa.corp.56.com/general/attendance/personal/report/search.php?DATE1=2014-07-30&DATE2=2014-08-30');
+        var date2 = new Date().Format("yyyy-MM-dd");
+        var time2 = new Date().getTime() - 24*3600*31*1000;//一个月前
+        var date1 = new Date(time2).Format("yyyy-MM-dd");
+        var url = 'http://oa.corp.56.com/general/attendance/personal/report/search.php?DATE1='+date1+'&DATE2='+date2;
+        createIframe(url);
 
     }
     img.onmouseover = function() {

@@ -58,6 +58,7 @@ for(var i=0,n=userdata.length; i < n; i++) {
 
 //渲染图表配置
 $(document).ready(function(){
+
 $(function () {
  $('#container').highcharts({
         title: {
@@ -95,58 +96,58 @@ $(function () {
     });
 });
 
-$(function () {
+// $(function () {
 
-    var data2 = [];
-    for (var i = userdata.length - 1; i >= 0; i--) {
-        //把时间换成点
-        data2[i] = [new Date(date[i]).getTime(),
-                    isNaN(parseFloat(start_time[i].substring(0,5).replace(':','.')))  ? null : parseFloat(start_time[i].substring(0,5).replace(':','.')), 
-                    isNaN(parseFloat(end_time[i].substring(0,5).replace(':','.'))) ? null : parseFloat(end_time[i].substring(0,5).replace(':','.'))];
+//     var data2 = [];
+//     for (var i = userdata.length - 1; i >= 0; i--) {
+//         //把时间换成点
+//         data2[i] = [new Date(date[i]).getTime(),
+//                     isNaN(parseFloat(start_time[i].substring(0,5).replace(':','.')))  ? null : parseFloat(start_time[i].substring(0,5).replace(':','.')), 
+//                     isNaN(parseFloat(end_time[i].substring(0,5).replace(':','.'))) ? null : parseFloat(end_time[i].substring(0,5).replace(':','.'))];
 
-    };
+//     };
 
-// console.log(data2);
-    $('#container2').highcharts({
+// // console.log(data2);
+//     $('#container2').highcharts({
     
-        chart: {
-            type: 'arearange'
-        },
+//         chart: {
+//             type: 'arearange'
+//         },
         
-        title: {
-            text: '工作时间'
-        },
+//         title: {
+//             text: '工作时间'
+//         },
     
-        xAxis: {
-            type: 'datetime',
-            tickInterval: 24*3600*1000
-        },
+//         xAxis: {
+//             type: 'datetime',
+//             tickInterval: 24*3600*1000
+//         },
         
-        yAxis: {
-            reversed: true,
-            // tickInterval : 0.5,
-            title: {
-                text: '时间'
-            }
-        },
+//         yAxis: {
+//             reversed: true,
+//             // tickInterval : 0.5,
+//             title: {
+//                 text: '时间'
+//             }
+//         },
 
-        tooltip: {
-            crosshairs: true,
-            shared: true,
-        },
+//         tooltip: {
+//             crosshairs: true,
+//             shared: true,
+//         },
     
-        series: [{
-            name: '时间',
-            data: data2,
-            dataLabels: {
-                enabled: true,
-                yHigh: 20,
-                yLow: -20
-            }
-        }]
+//         series: [{
+//             name: '时间',
+//             data: data2,
+//             dataLabels: {
+//                 enabled: true,
+//                 yHigh: 20,
+//                 yLow: -20
+//             }
+//         }]
     
-    });
-});
+//     });
+// });
 
 $(function () {
 
@@ -199,4 +200,5 @@ $(function () {
         });
     });
 
+$("#time").html( date[0] + '—' + date[userdata.length - 1] );
 });//onload end
