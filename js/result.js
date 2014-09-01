@@ -64,6 +64,9 @@ $(function () {
         title: {
             text: '工作时长'
         },
+        subtitle: {
+            text: '这么多时间你都干了些什么？'
+        },
         xAxis: {
             categories: date
         },
@@ -166,7 +169,7 @@ $(function () {
                 text: '工作时间'
             },
             subtitle: {
-                text: '到达和离开统计'
+                text: '你喜欢早到还是晚退？'
             },
             xAxis: {
                 categories: date
@@ -200,5 +203,87 @@ $(function () {
         });
     });
 
-$("#time").html( date[0] + '—' + date[userdata.length - 1] );
+$(function () {
+
+var Mon = {n:0, total: 0};
+var Tue = {n:0, total: 0};
+var Wed = {n:0, total: 0};
+var Thur = {n:0, total: 0};
+var Fir = {n:0, total: 0};
+for (var i = userdata.length - 1; i >= 0; i--) {
+    if(!isNaN(userdata[i].duration) && userdata[i].duration > 0)
+    if(userdata[i].weekdate == '一') {
+        Mon.n++;
+        Mon.total += parseFloat(userdata[i].duration);
+    } else if(userdata[i].weekdate == '二') {
+        Tue.n++;
+        Tue.total += parseFloat(userdata[i].duration);
+    } else if(userdata[i].weekdate == '三') {
+        Wed.n++;
+        Wed.total += parseFloat(userdata[i].duration);
+    } else if(userdata[i].weekdate == '四') {
+        Thur.n++;
+        Thur.total += parseFloat(userdata[i].duration);
+    } else if(userdata[i].weekdate == '五') {
+        Fir.n++;
+        Fir.total += parseFloat(userdata[i].duration);
+    }
+}
+//calculate weekdate avgerage
+var Mon_avg = parseFloat(Mon.total / Mon.n).toFixed(2);
+var Tue_avg = parseFloat(Tue.total / Tue.n).toFixed(2);
+var Wed_avg = parseFloat(Wed.total / Wed.n).toFixed(2);
+var Thur_avg = parseFloat(Thur.total / Thur.n).toFixed(2);
+var Fir_avg = parseFloat(Fir.total / Fir.n).toFixed(2);
+
+    $('#container4').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: '一周统计'
+        },
+        subtitle: {
+            text: '你更喜欢在哪天工作？'
+        },
+        xAxis: {
+            categories: ['周一', '周二', '周三', '周四', '周五'],
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            min: 8,
+            tickInterval:0.5,
+            title: {
+                text: '时间 (小时)',
+                align: 'high'
+            },
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ' 小时'
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: '工作时长',
+            data: [parseFloat(Mon_avg), parseFloat(Tue_avg), parseFloat(Wed_avg), parseFloat(Thur_avg), parseFloat(Fir_avg)]
+        }]
+    });
+});
+
+
+
+$("#time").html( date[0] + ' 到 ' + date[userdata.length - 1] );
 });//onload end
