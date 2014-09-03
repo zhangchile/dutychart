@@ -20,7 +20,7 @@
     "tabs"
 ],
 "web_accessible_resources":[
-"img/top.png",
+"img/logo.png",
 "js/libs/highcharts-4.0.3/highcharts.js",
 "css/style.css",
 "html/result.html",

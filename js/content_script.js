@@ -60,10 +60,10 @@ var addButton = function() {
 
     var img = document.createElement("img");
     img.id = "gotop";
-    img.src = chrome.extension.getURL("img/top.png");
+    img.src = chrome.extension.getURL("img/logo.png");
     img.alt = "56微统计";
     img.title = "56微统计";
-    img.setAttribute("style","position: fixed;bottom: 113px;z-index: 99;left: 300px;top:5px;cursor:pointer;opacity: 0.5;");
+    img.setAttribute("style","width: 80px;position: fixed;bottom: 113px;z-index: 99;left: 300px;top:5px;cursor:pointer;opacity: 0.7;");
     img.onclick = function (){ 
         var date2 = new Date().Format("yyyy-MM-dd");
         var time2 = new Date().getTime() - 24*3600*31*1000;//一个月前
@@ -76,7 +76,7 @@ var addButton = function() {
         this.style.opacity = 1;
     }
     img.onmouseout = function() {
-        this.style.opacity = 0.5;
+        this.style.opacity = 0.7;
     }
     var content = document.querySelector("#frame1").children[0].contentDocument;
     content.body.appendChild(img);
