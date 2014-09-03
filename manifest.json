@@ -27,5 +27,6 @@
 "js/libs/jquery/jquery.min.js",
 "js/libs/highcharts-4.0.3/highcharts-more.js",
 "js/libs/highcharts-4.0.3/modules/exporting.js"
-]
+],
+"options_page": "html/options.html"
 }
