@@ -1,8 +1,5 @@
 var getData = function(content) {
-
-    // var content1 = document.querySelector("#frame1").children[1].children[1].contentDocument;//获取框架内的dom
-    // var content2 = content1.querySelector("frameset").children[1].contentDocument;//
-    // var content3 = content2.querySelector("frameset").children[1].contentDocument;
+    
     var content3 = content;
     var tablelist = content3.querySelector(".TableList");
     var dataArr = tablelist.querySelectorAll(".TableData");
