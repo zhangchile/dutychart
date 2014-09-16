@@ -1,8 +1,8 @@
 {
-"name": "56微统计",
+"name": "56考勤统计",
 "manifest_version": 2,
 "version": "1.0",
-"description": "一个通过56员工考勤记录生成统计图表的扩展",
+"description": "一个通过56员工考勤记录生成统计图表的扩展，查考勤就是如此简单！~",
 "icons": { "128": "img/logo.png" },
 "content_scripts": [{
 "matches": ["http://oa.corp.56.com/*"],
@@ -10,7 +10,7 @@
 }],
 "page_action":{
     "default_icon":"img/logo.png",
-    "default_title":"56微统计",
+    "default_title":"56考勤统计",
     "default_popup":"html/popup.html"
 },
 "background": {
