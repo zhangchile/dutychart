@@ -31,8 +31,9 @@
 
 ### 问题
 
-1. Chrome 稳定版会默认阻止未在chrome store发布的应用，以确保安全性，但国内似乎连不到chrome store。
+1. Chrome 稳定版会默认阻止未在chrome store发布的应用以确保安全性，这样会导致应用不能正常使用。（但国内似乎连不到chrome store）
+
 解决办法：
 1. 下载安装chrome的开发版，[下载chrome开发版](https://www.google.com/chrome/browser/?platform=win&channel=dev)
-2. 注册开发者账户，并把应用发布到 chrome store ，需要支付USD $5以认证身份，我没有visa的银行卡呀~ :( 
+2. 注册开发者账户，并把应用发布到 chrome store ，需要支付USD $5.00 以认证身份，可是我没有visa的银行卡呀~ :( 
 
